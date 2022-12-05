@@ -1,15 +1,16 @@
 import {ApiProperty} from "@nestjs/swagger";
-import {IsNumber, IsString} from "class-validator";
+import { IsNumber, IsString } from "class-validator";
+
 
 export class CreatePostDto {
-    @ApiProperty({example: 'Моя статья', description: 'Заголовок'})
-    @IsString({message: 'Должно быть строкой'})
+    @ApiProperty({example: 'Some text', description: 'Title'})
+    @IsString({message: 'Moust be string'})
     readonly title: string;
-    @ApiProperty({example: 'Мой текст', description: 'текст'})
-    @IsString({message: 'Должно быть строкой'})
+    @ApiProperty({example: 'Some more text', description: 'Content'})
+    @IsString({message: 'Moust be string'})
     readonly content: string;
     @ApiProperty({example: '1', description: 'ID'})
-    @IsNumber({}, {message: "Должно быть числом"})
+    @IsNumber({}, {message: "Moust be string"})
     readonly userId: number;
 }
 

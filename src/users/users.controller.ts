@@ -10,20 +10,20 @@ import {AddRoleDto} from "./dto/add-role.dto";
 import {BanUserDto} from "./dto/ban-user.dto";
 
 
-@ApiTags('Пользователи')
+@ApiTags('Управление пользователями / User controll settings')
 @Controller('users')
 export class UsersController {
 
     constructor(private usersService: UsersService) {}
 
-    @ApiOperation({summary: 'Создание пользователя'})
+    @ApiOperation({summary: 'Создание пользователя / Create user'})
     @ApiResponse({status: 200, type: User})
     @Post()
     create(@Body() userDto: CreateUserDto) {
         return this.usersService.createUser(userDto);
     }
 
-    @ApiOperation({summary: 'Получить всех пользователей'})
+    @ApiOperation({summary: 'Получить всех пользователей / Get all users'})
     @ApiResponse({status: 200, type: [User]})
     @Roles("ADMIN")
     @UseGuards(RolesGuard)
@@ -32,7 +32,7 @@ export class UsersController {
         return this.usersService.getAllUsers();
     }
 
-    @ApiOperation({summary: 'Выдать роль'})
+    @ApiOperation({summary: 'Выдать роль / Add role'})
     @ApiResponse({status: 200})
     @Roles("ADMIN")
     @UseGuards(RolesGuard)
@@ -41,7 +41,7 @@ export class UsersController {
         return this.usersService.addRole(dto);
     }
 
-    @ApiOperation({summary: 'Забанить пользователя'})
+    @ApiOperation({summary: 'Забанить пользователя / Ban user'})
     @ApiResponse({status: 200})
     @Roles("ADMIN")
     @UseGuards(RolesGuard)
