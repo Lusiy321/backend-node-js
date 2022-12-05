@@ -11,15 +11,19 @@ interface PostCreationAttrs {
 
 @Table({tableName: 'posts'})
 export class Posts extends Model<Posts, PostCreationAttrs> {
+
     @ApiProperty({example: '1', description: 'Post Id'})
     @Column({type: DataType.INTEGER, unique: true, autoIncrement: true, primaryKey: true})
     id: number;
+
     @ApiProperty({example: 'Some text', description: 'Post title'})
     @Column({type: DataType.STRING, unique: true, allowNull: false})
     title: string;
+
     @ApiProperty({example: 'Some more text', description: 'Post content'})
     @Column({type: DataType.STRING, allowNull: false})
     content: string;
+    
     @ApiProperty({example: './', description: 'Add image'})
     @Column({type: DataType.STRING})
     image: string;
