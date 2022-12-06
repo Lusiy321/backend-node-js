@@ -27,9 +27,9 @@ export class UsersController {
 
     @ApiOperation({ summary: 'Получить всех пользователей / Get all users' })
     @ApiResponse({ status: 200, type: [User] })
-    @ApiParam(ApiBearerAuth)
-    @Roles("ADMIN")
-    @UseGuards(RolesGuard)
+    // @ApiParam(ApiBearerAuth)
+    // @Roles("ADMIN")
+    // @UseGuards(RolesGuard)
     @Get()
     getAll() {
         return this.usersService.getAllUsers();
@@ -38,7 +38,7 @@ export class UsersController {
     @ApiOperation({ summary: 'Получить пользователя по email / Get one user by email' })
     @ApiResponse({ status: 200, type: User })
     // @ApiParam(ApiBearerAuth)
-    // @Roles("ADMIN")
+    // @Roles("ADMIN") 
     // @UseGuards(RolesGuard)
     @Get('/find')
     getByEmail(@Body() userDto: FindUserDto) {

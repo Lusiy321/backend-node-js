@@ -13,7 +13,7 @@ export class CreatePostDto {
     readonly content: string;
 
     @ApiProperty({example: '1', description: 'ID'})
-    @IsNumber({}, {message: "Moust be number"})
+    @IsNumber({}, {message: 'Moust be number'})
     readonly userId: number;
 }
 

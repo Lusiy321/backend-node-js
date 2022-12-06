@@ -1,6 +1,7 @@
 import {BelongsTo, Column, DataType, ForeignKey, Model, Table} from "sequelize-typescript";
 import {ApiProperty} from "@nestjs/swagger";
 import {User} from "../users/users.model";
+import { identity } from "rxjs";
 
 interface PostCreationAttrs {
     title: string;
@@ -11,7 +12,7 @@ interface PostCreationAttrs {
 @Table({tableName: 'posts'})
 export class Posts extends Model<Posts, PostCreationAttrs> {
 
-    @ApiProperty({example: '1', description: 'Post Id'})
+    @ApiProperty({ example: '1', description: 'Post Id' })
     @Column({type: DataType.INTEGER, unique: true, autoIncrement: true, primaryKey: true})
     id: number;
 

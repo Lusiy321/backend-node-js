@@ -1,7 +1,8 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import {CreatePostDto} from "./dto/create-post.dto";
 import {InjectModel} from "@nestjs/sequelize";
 import {Posts} from "./posts.model";
+import { User } from 'src/users/users.model';
 
 @Injectable()
 export class PostsService {
@@ -10,7 +11,7 @@ export class PostsService {
 
     async create(dto: CreatePostDto) {
         
-        const post = await this.postRepository.create({...dto})
+        const post = await this.postRepository.create({ ...dto })
         return post;
     }
 
