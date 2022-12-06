@@ -1,4 +1,4 @@
-import {Body, Controller, Get, Patch, Post, Put, UseGuards, UsePipes} from '@nestjs/common';
+import {Body, Controller, Get, Post, UseGuards, UsePipes} from '@nestjs/common';
 import {CreateUserDto} from "./dto/create-user.dto";
 import {UsersService} from "./users.service";
 import {ApiBearerAuth, ApiOperation, ApiParam, ApiResponse, ApiTags} from "@nestjs/swagger";
@@ -10,8 +10,7 @@ import {BanUserDto} from "./dto/ban-user.dto";
 import { ValidationPipe } from 'src/pipes/validation.pipe';
 import { FindUserDto } from './dto/find-user.dto';
 
-
-
+  
 @ApiTags('Управление пользователями / User controll settings')
 @Controller('users')
 export class UsersController {
@@ -38,9 +37,9 @@ export class UsersController {
 
     @ApiOperation({ summary: 'Получить пользователя по email / Get one user by email' })
     @ApiResponse({ status: 200, type: User })
-    @ApiParam(ApiBearerAuth)
-    @Roles("ADMIN")
-    @UseGuards(RolesGuard)
+    // @ApiParam(ApiBearerAuth)
+    // @Roles("ADMIN")
+    // @UseGuards(RolesGuard)
     @Get('/find')
     getByEmail(@Body() userDto: FindUserDto) {
         return this.usersService.getUserByEmail(userDto.email);

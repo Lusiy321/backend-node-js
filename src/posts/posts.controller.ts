@@ -15,7 +15,7 @@ export class PostsController {
     @ApiOperation({summary: 'Создание поста / Create new post'})
     @ApiResponse({ status: 200, type: Posts })
     @UsePipes(ValidationPipe)
-    @Post()
+    @Post() 
     @UseInterceptors()
     createPost(@Body() dto: CreatePostDto) {
         return this.postService.create(dto)

@@ -16,11 +16,11 @@ export class User extends Model<User, UserCreationAttrs> {
     @Column({type: DataType.INTEGER, unique: true, autoIncrement: true, primaryKey: true})
     id: number;
 
-    @ApiProperty({example: 'user@mail.ru', description: 'Email adress'})
+    @ApiProperty({example: 'user@mail.com', description: 'Email adress'})
     @Column({type: DataType.STRING, unique: true, allowNull: false})
     email: string;
     
-    @ApiProperty({example: '12345678', description: 'Password'})
+    @ApiProperty({example: '1234QWweeeas', description: 'Password'})
     @Column({type: DataType.STRING, allowNull: false})
     password: string;
 
