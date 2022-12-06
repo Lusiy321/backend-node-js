@@ -1,4 +1,4 @@
-import {Body, Controller, Get, Post, UseGuards, UsePipes} from '@nestjs/common';
+import {Body, Controller, Get, Patch, Post, Put, UseGuards, UsePipes} from '@nestjs/common';
 import {CreateUserDto} from "./dto/create-user.dto";
 import {UsersService} from "./users.service";
 import {ApiBearerAuth, ApiOperation, ApiParam, ApiResponse, ApiTags} from "@nestjs/swagger";
@@ -8,7 +8,8 @@ import {RolesGuard} from "../auth/roles.guard";
 import {AddRoleDto} from "./dto/add-role.dto";
 import {BanUserDto} from "./dto/ban-user.dto";
 import { ValidationPipe } from 'src/pipes/validation.pipe';
-import { KeyObject } from 'crypto';
+import { FindUserDto } from './dto/find-user.dto';
+
 
 
 @ApiTags('Управление пользователями / User controll settings')
@@ -33,6 +34,16 @@ export class UsersController {
     @Get()
     getAll() {
         return this.usersService.getAllUsers();
+    }
+
+    @ApiOperation({ summary: 'Получить пользователя по email / Get one user by email' })
+    @ApiResponse({ status: 200, type: User })
+    @ApiParam(ApiBearerAuth)
+    @Roles("ADMIN")
+    @UseGuards(RolesGuard)
+    @Get('/find')
+    getByEmail(@Body() userDto: FindUserDto) {
+        return this.usersService.getUserByEmail(userDto.email);
     }
 
     @ApiOperation({summary: 'Выдать роль / Add role'})

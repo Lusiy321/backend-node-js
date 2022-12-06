@@ -1,4 +1,4 @@
-import {BelongsTo, BelongsToMany, Column, DataType, ForeignKey, Model, Table} from "sequelize-typescript";
+import {BelongsTo, Column, DataType, ForeignKey, Model, Table} from "sequelize-typescript";
 import {ApiProperty} from "@nestjs/swagger";
 import {User} from "../users/users.model";
 
@@ -6,7 +6,6 @@ interface PostCreationAttrs {
     title: string;
     content: string;
     userId: number;
-    image: string;
 }
 
 @Table({tableName: 'posts'})
@@ -23,10 +22,6 @@ export class Posts extends Model<Posts, PostCreationAttrs> {
     @ApiProperty({example: 'Some more text', description: 'Post content'})
     @Column({type: DataType.STRING, allowNull: false})
     content: string;
-    
-    @ApiProperty({example: './', description: 'Add image'})
-    @Column({type: DataType.STRING})
-    image: string;
 
     @ForeignKey(() => User)
     @Column({type: DataType.INTEGER})
