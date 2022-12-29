@@ -1,3 +1,6 @@
+
+![Swagger](https://user-images.githubusercontent.com/107991551/209990553-a0e42e29-7537-4725-93a7-d36973d4775a.png)
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
