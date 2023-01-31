@@ -1,3 +1,6 @@
+/// <reference types="node" />
 export declare class FilesService {
-    createFile(file: any): Promise<string>;
+    createFile(file: {
+        buffer: string | NodeJS.ArrayBufferView;
+    }): Promise<string>;
 }
